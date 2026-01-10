@@ -83,9 +83,16 @@ jobs:
           # Start container in background
           docker run -d -p 8000:8000 --name avazu-api-test avazu-ctr-api:latest
           
-          # Wait for service to be ready
+          # Wait for service to be ready (with retries)
           echo "Waiting for API to start..."
-          sleep 15
+          for i in {1..30}; do
+            if curl -f http://localhost:8000/health > /dev/null 2>&1; then
+              echo "API is ready!"
+              break
+            fi
+            echo "Waiting... ($i/30)"
+            sleep 2
+          done
           
           # Run smoke test script
           python scripts/smoke_test_api.py
