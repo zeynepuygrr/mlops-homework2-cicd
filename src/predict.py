@@ -19,7 +19,7 @@ DATA_PATH = "data/train.gz"
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--nrows", type=int, default=200)
-    args = parser.parse_args()
+    args, _ = parser.parse_known_args()   # <<< TEK DEĞİŞİKLİK
 
     artifact = joblib.load(ARTIFACT_PATH)
     # Support artifact shapes:
@@ -90,3 +90,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
