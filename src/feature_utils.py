@@ -53,7 +53,7 @@ def to_feature_dict(
 
     dicts: list[TokenDict] = []
     # itertuples hızlı; row bir tuple
-    for row in df[feature_cols].itertuples(index=False, name=None)  # Eksik ':'
+    for row in df[feature_cols].itertuples(index=False, name=None):
         feats: TokenDict = {}
 
         # Base tokens
