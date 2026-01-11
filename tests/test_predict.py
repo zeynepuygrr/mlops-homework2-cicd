@@ -1,7 +1,6 @@
 import joblib
 import gzip
 import csv
-from pathlib import Path
 from importlib.machinery import SourceFileLoader
 
 import pandas as pd
@@ -66,5 +65,5 @@ def test_predict_ensemble(tmp_path, capsys):
     captured = capsys.readouterr()
     assert "id | true_click | predicted_proba" in captured.out
     # ensure two data lines printed
-    lines = [l for l in captured.out.splitlines() if "|" in l]
+    lines = [line for line in captured.out.splitlines() if "|" in line]
     assert len(lines) >= 3
