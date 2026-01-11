@@ -28,6 +28,8 @@ models/
 metrics/
 mlruns/
 *.joblib
+# Exception: Allow artifacts/model.joblib for Docker build
+!artifacts/model.joblib
 *.csv
 *.gz
 

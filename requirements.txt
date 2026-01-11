@@ -10,3 +10,6 @@ joblib
 python-dotenv
 pytest
 ruff
+pytest-cov
+flake8
+requests

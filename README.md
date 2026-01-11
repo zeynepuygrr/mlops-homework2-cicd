@@ -31,10 +31,42 @@ Open: `http://127.0.0.1:5002`
 - Metrics: `metrics/metrics.json`, `metrics/metrics_baseline.json`
 - Checkpoints: `models/checkpoints/ckpt_chunk_*.joblib`
 
+## CI/CD Pipeline
+
+This project includes a complete CI/CD pipeline for automated testing and deployment:
+
+### Pipeline Stages
+- **Commit Stage (CI):** Linting → Unit Tests → Integration Tests
+- **Deployment Stage (CD):** Docker Build → Smoke Test
+
+### Running Tests Locally
+
+```bash
+# Run all tests
+make test
+
+# Run only unit tests
+make test-unit
+
+# Run only integration tests
+make test-integration
+
+# Run linting
+make lint
+
+# Run smoke test (requires API to be running)
+make smoke-test
+```
+
+### CI/CD Documentation
+- See `CI_CD_SETUP.md` for detailed pipeline documentation
+- See `SABOTAGE_TEST.md` for "Stop the Line" test scenarios
+
 ## Repository Structure
 ```
 src/                training + feature code
-scripts/            validate/register helpers
-tests/              unit tests
+scripts/            validate/register helpers + CI/CD scripts
+tests/              unit tests + integration tests
+.github/workflows/  CI/CD pipeline configuration
 training_summary.md latest results & evidence
 ```
