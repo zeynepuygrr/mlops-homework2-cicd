@@ -208,7 +208,3 @@ class TestHashingIntegration:
         # Verify cross feature exists in dict
         assert 'cross:site_id=s1|app_id=a1' in dicts[0]
 
-def test_sabotage_should_fail():
-    assert 1 == 0
-
-
