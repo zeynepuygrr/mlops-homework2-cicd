@@ -4,7 +4,7 @@ import math
 import os
 import time
 from dataclasses import dataclass
-from typing import Iterable, Optional
+from typing import Optional
 
 import numpy as np
 import pandas as pd
@@ -25,15 +25,11 @@ except Exception:  # pragma: no cover - MLflow optional
     MlflowClient = None
 
 
-import sys
-
-
 if os.environ.get("CI") == "true":
     print("CI environment detected — running tiny training (1 chunk) to produce artifacts.")
     os.environ.setdefault("MAX_TRAIN_CHUNKS", "1")
     os.environ.setdefault("VAL_ROWS", "10000")
     os.environ.setdefault("N_ESTIMATORS", "1")
-
 
 
 @dataclass
@@ -107,12 +103,7 @@ def _build_models(cfg: Config, class_weight_param: Optional[dict[int, float]]) -
     return models
 
 
-def _train_on_chunk(
-    models: list[SGDClassifier],
-    X_h,
-    y: np.ndarray,
-    classes: np.ndarray,
-):
+def _train_on_chunk(models: list[SGDClassifier], X_h, y: np.ndarray, classes: np.ndarray):
     for m in models:
         if not hasattr(m, "classes_"):
             m.partial_fit(X_h, y, classes=classes)
