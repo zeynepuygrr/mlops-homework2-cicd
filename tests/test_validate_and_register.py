@@ -1,6 +1,6 @@
 import json
 import subprocess
-from pathlib import Path
+
 
 
 def test_validate_and_register_registers(monkeypatch, tmp_path):
