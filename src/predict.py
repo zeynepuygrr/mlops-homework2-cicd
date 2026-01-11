@@ -6,11 +6,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent  # src -> repo root
 sys.path.insert(0, str(ROOT))
 
-from monitoring.log import log_prediction
-
-import joblib
-import pandas as pd
-from feature_utils import to_feature_dict
+from monitoring.log import log_prediction  # noqa: E402
+import joblib  # noqa: E402
+import pandas as pd  # noqa: E402
+from feature_utils import to_feature_dict  # noqa: E402
 
 
 ARTIFACT_PATH = "models/ctr_model_hashing.joblib"
