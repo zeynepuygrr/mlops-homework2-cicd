@@ -17,7 +17,7 @@ def register_model(
     model_uri = f"runs:/{run_id}/{artifact_path}"
 
     # Create model if missing
-    existing = [m.name for m in client.search_registered_models()]
+    existing = [m.name for m in client.list_registered_models()]  # <<< TEK DEĞİŞİKLİK
     if name not in existing:
         client.create_registered_model(name)
 
